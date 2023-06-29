@@ -97,7 +97,7 @@
 
   import { ref, watch, onMounted } from "vue";
   const username = ref('');
-  const drawer = ref(null);
+  const drawer = ref<any>(null);
   const items = [
     { title: "Todo", icon: "mdi-format-list-checks", to: "/" },
     // { title: "About", icon: "mdi-help-box", to: "/about" },
