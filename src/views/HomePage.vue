@@ -24,10 +24,10 @@
         <!-- Looping for the tasks -->
         <div
           v-for="(task, i) in tasks"
-          :key="task.id"
+          :key="task['id']"
           class="sortable"
         >
-          <v-list-item :class="{ 'blue lighten-5': task.done }">
+          <v-list-item :class="{ 'blue lighten-5': task['done'] }">
             <div style="display: flex; align-items: center">
               <v-list-item-action
                 hide-details="auto"
@@ -35,7 +35,7 @@
               >
                 <v-checkbox
                   v-if="handle != true"
-                  :input-value="task.done"
+                  :input-value="task['done']"
                 />
                 <v-icon
                   v-else
@@ -47,38 +47,38 @@
               </v-list-item-action>
 
               <v-list-item style="width: 90%">
-                <v-list-item-title :class="{ 'text-decoration-line-through': task.done }">
-                  {{ task.title }}
+                <v-list-item-title :class="{ 'text-decoration-line-through': task['done'] }">
+                  {{ task['title'] }}
                 </v-list-item-title>
               </v-list-item>
 
               <v-list-item
-                v-if="task.dueDate"
+                v-if="task['dueDate']"
                 class="text-right text-uppercase"
               >
                 <v-list-item-title class="caption">
                   <v-icon
-                    v-if="!task.expired || task.done"
+                    v-if="!task['expired'] || task['done']"
                     dense
                     class="mr-1"
                   >
                     mdi-calendar-outline
                   </v-icon>
                   <v-icon
-                    v-else-if="!task.done && task.expired"
+                    v-else-if="!task['done'] && task['expired']"
                     dense
                     class="mr-1 error--text"
                   >
                     mdi-calendar-alert
                   </v-icon>
-                  <span :class="{ 'error--text font-weight-bold': task.expired && !task.done }"> {{ computedDue(task.dueDate) }}</span>
+                  <span :class="{ 'error--text font-weight-bold': task['expired'] && !task['done'] }"> {{ computedDue(task['dueDate']) }}</span>
                 </v-list-item-title>
               </v-list-item>
               <v-btn
                 text
                 color="primary"
                 style="position: absolute;right: 0;"
-                @click="deleteTask(task.id)"
+                @click="deleteTask(task['id'])"
               >
                 Delete
               </v-btn>
@@ -88,28 +88,28 @@
           <v-dialog
             v-if="dialog === 0"
             ref="dialog"
-            v-model="task.modal"
+            v-model="task['modal']"
             persistent
             width="290px"
           >
             <v-card>
               <v-card-title>Edit task</v-card-title>
               <v-text-field
-                v-model="task.title"
+                v-model="task['title']"
                 class="pa-5"
-                @keyup.enter="saveTask($refs, i, task.title, 'Task updated!')"
+                @keyup.enter="saveTask($refs, i, task['title'], 'Task updated!')"
               />
               <v-btn
                 text
                 color="primary"
-                @click.stop="task.modal = false"
+                @click.stop="task['modal'] = false"
               >
                 Cancel
               </v-btn>
               <v-btn
                 text
                 color="primary"
-                @click.stop="saveTask($refs, i, task.title, 'Task updated!')"
+                @click.stop="saveTask($refs, i, task['title'], 'Task updated!')"
               >
                 Save
               </v-btn>
