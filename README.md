@@ -24,7 +24,7 @@ The stack of this boilerplate is focused on web app front end, therefore I’ll 
 
 ### Project Setup
 
-`Clone URL : https://github.com/trishant-kumar/vuetify3-boilerplate.git`
+`Clone URL : https://github.com/vue-simform/vuetify3-vite-pinia-ts-boilerplate.git`
 
 Clone repo using HTTP or SSH method.
 
